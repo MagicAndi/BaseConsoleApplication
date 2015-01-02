@@ -7,6 +7,12 @@ This was inspired by <a href="https://github.com/TypecastException/ConsoleApplic
 
 ## Packages
 This base console application makes use of the following nuget packages:
-* NLog
-* BizArk.Core
+* NLog - a .NET logging library (<a href="http://nlog-project.org/">http://nlog-project.org/</a>)
+* BizArk.Core -a command line parsing library (<a href="https://bizark.codeplex.com/">https://bizark.codeplex.com/</a>
 * 
+
+## Architecture
+This is an empty console application, with some stub command line arguments defined in the CommandLineArgs.cs class.  This class extends the BizArk.Core CmdLineObject class, as per the BizArk documentation: <a href="https://bizark.codeplex.com/wikipage?title=Command-line%20Parsing&referringTitle=Documentation">https://bizark.codeplex.com/wikipage?title=Command-line%20Parsing&referringTitle=Documentation</a>.
+
+## Future Work
+This is just an initial draft of the base console application.  I'm happy to take pull requests, suggestions, and ideas for ways it can be extended.
