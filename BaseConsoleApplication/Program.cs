@@ -15,14 +15,19 @@ namespace BaseConsoleApplication
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public static string ApplicationName
+        public static string ApplicationTitle
         {
-            get { return ConfigurationManager.AppSettings.Get("ApplicationName"); }
+            get { return AppScope.Configuration.ApplicationTitle; }
         }
 
         public static string Version
         {
             get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+        }
+
+        public static string ApplicationTitleAndVersion
+        {
+            get { return string.Format("{0} - Version {1}", ApplicationTitle, Version); }
         }
 
         /// <summary>
@@ -31,6 +36,8 @@ namespace BaseConsoleApplication
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
+            Console.WriteLine("Args: " + args[0] + args[1]);
+
             // Global exception handler
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
@@ -48,7 +55,7 @@ namespace BaseConsoleApplication
             }
 
             // Display application information
-            DisplayApplicationTitle(cmdLineArgs);
+            DisplayApplicationTitle();
 
             // Process command line arguments
 
@@ -60,23 +67,22 @@ namespace BaseConsoleApplication
         
         private static void ConfigureConsoleForDisplay()
         {
-            Console.Title = string.Format("{0} - Version {1}", ApplicationName, Version);
+            Console.WriteLine(ApplicationTitleAndVersion);
             Console.ForegroundColor = ConsoleColor.White;
         }
 
         private static void DisplayExitPrompt()
         {
-            if (true)
+            if (AppScope.Configuration.DisplayExitPrompt)
             {
-                
+                Console.WriteLine("Press Enter to exit application.");
+                Console.ReadLine();                
             }
-            Console.WriteLine("Press Enter to exit application.");
-            Console.ReadLine();
         }
 
-        private static void DisplayApplicationTitle(CommandLineArgs args)
+        private static void DisplayApplicationTitle()
         {
-            Console.WriteLine(args.Options.Title);
+            Console.WriteLine(ApplicationTitleAndVersion);
         }
 
         /// <summary>

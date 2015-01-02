@@ -49,8 +49,14 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Westwind.Utilities.Configuration, Version=2.25.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Westwind.Utilities.Configuration.2.25\lib\net40\Westwind.Utilities.Configuration.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationConfiguration.cs" />
+    <Compile Include="AppScope.cs" />
     <Compile Include="CommandLineArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -44,14 +44,12 @@ namespace BaseConsoleApplication
         /// <returns>String array containing any validation error messages.</returns>
         protected override string[] Validate()
         {
-            const string errorFormat = "{0} has an error: {1}";
-
             var errors = new List<string>();
             errors.AddRange(base.Validate());
 
             if(!File.Exists(this.InputFile))            
             {
-                errors.Add(string.Format(errorFormat, "InputFile", "Invalid input file - file '{0}' does not exist.", this.InputFile));
+                errors.Add(string.Format("InputFile has an error: file '{0}' does not exist.", this.InputFile));
             }
             
             return errors.ToArray();
