@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using NLog;
 using BizArk.Core.CmdLine;
+using System.IO;
 
 namespace BaseConsoleApplication
 {
@@ -30,9 +31,6 @@ namespace BaseConsoleApplication
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            // ConsoleApplication.RunProgram<CommandLineArgs>(Start);
-
-
             // Global exception handler
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
@@ -52,43 +50,14 @@ namespace BaseConsoleApplication
             // Display application information
             DisplayApplicationTitle(cmdLineArgs);
 
+            // Process command line arguments
 
-            // parse initial command line arguments
+            // Clean-up           
 
-            // Debug code
-            // logger.Warn("Filename: {0}", cmdLineArgs.InputFile);
-            //// throw new Exception("Crazy unhandled exception...");
-
-
-            if (cmdLineArgs.Interactive)
-            {
-                // Will run the console application in a loop until the user exits.
-                while (true)
-                {
-                    var consoleInput = ReadFromConsole();
-                    if (string.IsNullOrWhiteSpace(consoleInput)) continue;
-
-                    try
-                    {
-                        // Execute the command:
-                        string result = Execute(consoleInput);
-
-                        // Write out the result:
-                        WriteToConsole(result);
-                    }
-                    catch (Exception ex)
-                    {
-                        // OOPS! Something went wrong - Write out the problem:
-                        WriteToConsole(ex.Message);
-                    }
-                }
-            }
-
-            
-
+            // Exit
             DisplayExitPrompt();
         }
-
+        
         private static void ConfigureConsoleForDisplay()
         {
             Console.Title = string.Format("{0} - Version {1}", ApplicationName, Version);
@@ -97,6 +66,10 @@ namespace BaseConsoleApplication
 
         private static void DisplayExitPrompt()
         {
+            if (true)
+            {
+                
+            }
             Console.WriteLine("Press Enter to exit application.");
             Console.ReadLine();
         }
@@ -106,13 +79,6 @@ namespace BaseConsoleApplication
             Console.WriteLine(args.Options.Title);
         }
 
-        //private static void Start(CommandLineArgs args)
-        //{
-        //    // Your code goes here
-        //    Console.WriteLine("Made it to start!!");
-        //}
-
-
         /// <summary>
         /// Method to trap unhandled exceptions.
         /// </summary>
@@ -120,7 +86,7 @@ namespace BaseConsoleApplication
         /// <param name="e">The <see cref="UnhandledExceptionEventArgs"/> instance containing the event data.</param>
         static void UnhandledExceptionTrapper(object sender, UnhandledExceptionEventArgs e)
         {
-            logger.Error("An unhandled exception has occurred", e);
+            logger.Error("An unhandled exception has occurred", (Exception) e.ExceptionObject);
             DisplayExitPrompt();
             Environment.Exit(1);
         }

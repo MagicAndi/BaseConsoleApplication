@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="BizArk.Core, Version=2.0.14.0, Culture=neutral, PublicKeyToken=2aedb370d677d8c5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\bizark-80899\Current\BizArkCore\bin\BizArk.Core.dll</HintPath>
+      <HintPath>..\packages\BizArk.Core.2.0.14\lib\net40-Client\BizArk.Core.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
