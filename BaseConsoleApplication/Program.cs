@@ -36,8 +36,6 @@ namespace BaseConsoleApplication
         /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
-            Console.WriteLine("Args: " + args[0] + args[1]);
-
             // Global exception handler
             AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
 
@@ -53,10 +51,7 @@ namespace BaseConsoleApplication
                 Console.WriteLine(cmdLineArgs.GetHelpText(Console.WindowWidth));
                 return;
             }
-
-            // Display application information
-            DisplayApplicationTitle();
-
+            
             // Process command line arguments
 
             // Clean-up           
