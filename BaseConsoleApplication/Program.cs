@@ -15,7 +15,7 @@ namespace BaseConsoleApplication
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public static string ApplicationTitle
+        public static string ApplicationTitle 
         {
             get { return AppScope.Configuration.ApplicationTitle; }
         }
